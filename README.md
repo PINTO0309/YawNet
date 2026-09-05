@@ -4,6 +4,10 @@ Full-circle head-yaw regression via biternion (cos/sin) + von Mises κ, DINOv3 t
 
 An end-to-end pipeline — dataset construction, training, distillation and ONNX export — for 360° head-yaw estimation (biternion cos/sin regression) from synthetic data.
 
+- Demo: https://github.com/PINTO0309/High-Angle_Robust_Fast_FaceAlignment
+
+  https://github.com/user-attachments/assets/dbc5bb9e-710d-4cb1-be56-db4029d0c574
+
 ## 1. Setup (uv + venv)
 
 Package versions are fully pinned by `pyproject.toml` / `uv.lock` (the same versions as [High-Angle_Robust_Fast_FaceAlignment](https://github.com/PINTO0309/High-Angle_Robust_Fast_FaceAlignment)).
