@@ -1,5 +1,7 @@
 # YawNet
 
+![GitHub](https://img.shields.io/github/license/PINTO0309/YawNet?color=2BAF2B) 
+
 Full-circle head-yaw regression via biternion (cos/sin) + von Mises κ, DINOv3 teacher-student distillation on a purely synthetic 42k dataset.
 
 An end-to-end pipeline — dataset construction, training, distillation and ONNX export — for 360° head-yaw estimation (biternion cos/sin regression) from synthetic data.
