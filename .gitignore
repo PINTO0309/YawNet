@@ -225,9 +225,9 @@ data/yawpose
 *.timing
 runs/
 
-# DINOv3 等の事前学習重み(License 上コミットしない)
+# Pre-trained weights such as DINOv3 (not committed due to licensing)
 *.pth
 data/*.tar.gz
 *.pdf
-# SOTA 比較評価用の外部リポジトリ・重み(git 管理外)
+# External repositories and weights for SOTA comparative evaluation (not managed by git)
 docs/SemiUHPE/

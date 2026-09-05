@@ -1,6 +1,6 @@
 [project]
 name = "yawnet"
-version = "0.1.0"
+version = "1.0.0"
 description = "YawNet: full-circle head-yaw regression via biternion (cos/sin) + von Mises κ, DINOv3 teacher-student distillation on a purely synthetic 42k dataset"
 requires-python = ">=3.12,<3.14"
 
