@@ -1,6 +1,6 @@
 # YawNet
 
-![GitHub](https://img.shields.io/github/license/PINTO0309/YawNet?color=2BAF2B) 
+![GitHub](https://img.shields.io/github/license/PINTO0309/YawNet?color=2BAF2B) [![DOI](https://zenodo.org/badge/1357691963.svg)](https://doi.org/10.5281/zenodo.22314741)
 
 Full-circle head-yaw regression via biternion (cos/sin) + von Mises κ, DINOv3 teacher-student distillation on a purely synthetic 42k dataset.
 
@@ -246,10 +246,12 @@ Teacher/student and the presence of the κ head are detected automatically from 
 
 ```bibtex
 @software{hyodo2026yawnet,
-  author = {Katsuya Hyodo},
-  title  = {{YawNet}: Full-Circle Head-Yaw Regression via Biternion ({cos}/{sin}) + von Mises kappa, {DINOv3} Teacher-Student Distillation},
-  year   = {2026},
-  url    = {https://github.com/PINTO0309/YawNet}
+  author    = {Katsuya Hyodo},
+  title     = {{YawNet}: Full-Circle Head-Yaw Regression via Biternion ({cos}/{sin}) + von Mises kappa, {DINOv3} Teacher-Student Distillation},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.22161811},
+  url       = {https://github.com/PINTO0309/YawNet}
 }
 ```
 
