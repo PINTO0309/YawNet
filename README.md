@@ -28,16 +28,20 @@ This repository contains no actual data (`data/` is empty). Place the following 
 - `models/` — inference ONNX models (head detector `deimv2_wholebody49_boxes_only.onnx`, label verification `sixdrepnet360_1x3x224x224_full.onnx`, landmarks `hrffa_vitl_ibug68_1x3x320x320.onnx`, etc.)
 - `ckpts/` — DINOv3 pretrained weights (not committed for license reasons; referenced at runtime)
 
-## 3. Models (parameter counts and compute)
+## 3. Models (parameter counts, compute and reference accuracy)
 
 Compute is measured on the ONNX graphs (`scripts/count_macs_onnx.py`, accumulating Conv/MatMul/Gemm multiply-adds; GFLOPs = 2 × GMACs). Parameter counts are from the PyTorch implementations (slightly lower in ONNX after BN folding).
 
-| Model | Role | Input | Params [M] | GMACs | GFLOPs |
-|---|---|---|---:|---:|---:|
-| YawNet-64 | Student | 1x3x64x64 | 0.77 | 0.013 | 0.026 |
-| YawNet-96 | Student | 1x3x96x96 | 0.77 | 0.028 | 0.057 |
-| YawNet-128 | Student | 1x3x128x128 | 0.77 | 0.050 | 0.101 |
-| DINOv3 ViT-L + biternion head | Teacher | 1x3x320x320 | 304.20 | 130.684 | 261.367 |
+| Model | Input | Params [M] | GMACs | GFLOPs | MAAE [deg] | med [deg] | acc15 [%] | acc30 [%] |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| YawNet-64 | 64x64 | 0.77 | 0.013 | 0.026 | 12.94 | 8.65 | 73.5 | 92.6 |
+| YawNet-96 | 96x96 | 0.77 | 0.028 | 0.057 | 12.96 | 8.62 | 74.2 | 92.6 |
+| YawNet-128 | 128x128 | 0.77 | 0.050 | 0.101 | 12.62 | 8.47 | 75.7 | 92.6 |
+| DINOv3 ViT-L + biternion head | 320x320 | 304.20 | 130.684 | 261.367 | 0.97 | 0.78 | 99.98 | 100.0 |
+
+Reference accuracy (the four rightmost columns) is measured on the yawpose val split (4,211 images; circular angular error, see §4.7). The YawNet rows are the distilled students and the DINOv3 row is their teacher, all from the final product runs (`runs/{yawnet_distill_{064,096,128},dinov3_vitl16_320}_unified_*`), which are trained with `--unified` (train + val merged) — the val split is therefore **not held out** for these runs and the numbers are reference values, not held-out test scores (this inflates the teacher's row in particular, since the 304M teacher can memorize the merged data). As a held-out reference, the same DINOv3 teacher trained on the train split only reaches **13.55° val MAAE** (v5, hflip TTA; see [docs/yawpose_dataset.md](docs/yawpose_dataset.md)).
+
+**No established head-pose benchmark dataset (300W-LP, AFLW2000, BIWI, CMU Panoptic, DAD-3DHeads, etc.) is used anywhere in this project — deliberately, neither for training nor for evaluation.** All training and evaluation data is the purely synthetic yawpose dataset, so the numbers above are not comparable to accuracy reported on those benchmarks. For an external reference point on the same val split, SemiUHPE (full-range, published weights) scores 55.14° MAAE / acc30 53.5% (`scripts/eval_semiuhpe.py`, §6.4).
 
 ## 4. Training
 
