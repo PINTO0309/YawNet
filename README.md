@@ -18,7 +18,7 @@ An end-to-end pipeline — dataset construction, training, distillation and ONNX
 
 - Most of the public datasets used in the existing head-pose literature impose strict non-commercial / research-only terms, which makes them practically unusable for real-world products.
 - None of those public datasets covers the head orientations that actually occur in the real world — rear views above all.
-- yawpose instead ships with the real-world noise already synthesized in (low resolution, blur, occlusion, compression), and covers a wide range of camera angles, head pitch, and the full 360° yaw circle.
+- yawpose instead ships with the real-world noise already synthesized in (low resolution, blur, occlusion, compression), and covers a wide range of camera angles, head pitch, and the full 360° yaw circle. The synthesis also mass-produces samples with occluding items and appearance variation — eyeglasses, sunglasses, face masks, hoods, with/without hair, with/without beards, earrings, necklaces and so on — across genders and age groups.
 - Training and validation use purely synthetic data only, so no dataset licensing problem can arise (the dataset itself is CC BY 4.0, §3).
 - Every unnecessary parameter is cut away and the model specializes in the bare minimum — full-circle yaw only; in exchange, the perceived accuracy of the estimated yaw direction is high.
 
