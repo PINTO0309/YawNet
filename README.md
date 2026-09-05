@@ -8,6 +8,10 @@ An end-to-end pipeline — dataset construction, training, distillation and ONNX
 
   https://github.com/user-attachments/assets/dbc5bb9e-710d-4cb1-be56-db4029d0c574
 
+- Verification sample image
+
+  <img width="672" height="700" alt="val_preview_best" src="https://github.com/user-attachments/assets/6fc7104c-a0de-4aad-b4c8-601493a973e6" />
+
 ## 1. Motivation and design principles
 
 - Most of the public datasets used in the existing head-pose literature impose strict non-commercial / research-only terms, which makes them practically unusable for real-world products.
